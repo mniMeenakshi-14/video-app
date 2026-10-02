@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
-<title>🐼 VideoMood 🦊 Bring Photos to Life</title>
+<title>🐼 FrameMotion 🦊 Bring Photos to Life</title>
 <style>
 :root{--bg1:#fde4ff;--bg2:#fbd4ff;--bg3:#ffd4f1;--card:rgba(255, 255, 255, 0.78);--text:#2a1f45;--muted:#7c6f9b;--border:rgba(255,255,255,.9);--brand1:#8b5cf6;--brand2:#ec4899;--shadow:0 8px 30px rgba(139,92,246,.18)}
 @media (prefers-color-scheme:dark){:root{--bg1:#2e3010;--bg2:#14112b;--bg3:#0e1c33;--card:rgba(38,30,66,.78);--text:#f3eeff;--muted:#a79fc9;--border:rgba(255,255,255,.08);--shadow:0 8px 30px rgba(0,0,0,.45)}}
@@ -60,13 +60,13 @@ img,video{width:100%;border-radius:16px;margin-top:10px;display:block}
 <body>
 <div id="sky"></div>
 <nav>
-  <span class="logo"><span class="brand">My VideoMood<span class="em em1">🐱</span><span class="em em2">🦊</span><span class="em em3">🐼</span></span></span>
+  <span class="logo"><span class="brand">FrameMotion<span class="em em1">🐱</span><span class="em em2">🦊</span><span class="em em3">🐼</span></span></span>
   <span>🙋 Create</span>
 </nav>
 
 <div class="container">
   <div class="hero">
-    <h1><span class="brand">VideoMood<span class="em em1">🐱</span><span class="em em2">🦊</span><span class="em em3">🐼</span></span></h1>
+    <h1><span class="brand">Your FrameMotion<span class="em em1">🐱</span><span class="em em2">🦊</span><span class="em em3">🐼</span></span></h1>
     <p class="tagline">🐼 Bring your photos to life! 🦊</p>
     <p class="tagline2">🐶 Upload · 🐱 Describe · 🦁 Generate · 🐻 Download 🐰</p>
   </div>
@@ -74,13 +74,13 @@ img,video{width:100%;border-radius:16px;margin-top:10px;display:block}
   <div class="card">
     <div class="row">
       <div class="avatar">🐱</div>
-      <div><b>Create a video</b><span class="meta">Upload a photo and describe the movement</span></div>
+      <div><b>Create a FrameMotion</b><span class="meta">Upload a photo and describe the movement</span></div>
     </div>
     <label class="drop" for="image"><span>🐶</span>Tap to choose a photo</label>
     <input type="file" id="image" accept="image/*">
     <img id="preview" style="display:none">
     <textarea id="prompt" rows="3" placeholder="e.g. she smiles and waves 👩"></textarea>
-    <button class="btn" id="btn" onclick="generate()">Generate Video 🦊</button>
+    <button class="btn" id="btn" onclick="generate()">Generate FrameMotion 🦊</button>
     <div id="loader">🐶</div>
     <p id="status"></p>
   </div>
@@ -88,10 +88,10 @@ img,video{width:100%;border-radius:16px;margin-top:10px;display:block}
   <div class="card" id="resultCard" style="display:none">
     <div class="row">
       <div class="avatar">🐰</div>
-      <div><b>Your video</b><span class="meta">Freshly made</span></div>
+      <div><b>Your FrameMotion</b><span class="meta">Freshly made</span></div>
     </div>
     <video id="result" controls loop></video>
-    <a id="dl" class="btn" download="my-video.mp4">Download Video 🐻</a>
+    <a id="dl" class="btn" download="my-video.mp4">Download your FrameMotion 🐻</a>
   </div>
 
   <div style="text-align:center;font-size:1.4rem;letter-spacing:6px;margin-top:20px">🐱🐶🦊🐼🐯🦁🐸🐵🐧🦉🧑👩👨</div>
