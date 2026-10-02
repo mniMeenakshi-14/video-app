@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+<title>🐼 VideoMood 🦊 Bring Photos to Life</title>
+<style>
+:root{--bg1:#fde4ff;--bg2:#fbd4ff;--bg3:#ffd4f1;--card:rgba(255, 255, 255, 0.78);--text:#2a1f45;--muted:#7c6f9b;--border:rgba(255,255,255,.9);--brand1:#8b5cf6;--brand2:#ec4899;--shadow:0 8px 30px rgba(139,92,246,.18)}
+@media (prefers-color-scheme:dark){:root{--bg1:#2e3010;--bg2:#14112b;--bg3:#0e1c33;--card:rgba(38,30,66,.78);--text:#f3eeff;--muted:#a79fc9;--border:rgba(255,255,255,.08);--shadow:0 8px 30px rgba(0,0,0,.45)}}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:"Segoe UI",system-ui,sans-serif;color:var(--text);line-height:1.5;background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));background-attachment:fixed}
+#sky{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#sky span{position:absolute;bottom:-60px;opacity:.55;animation:floatUp linear infinite}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg)}100%{transform:translateY(-115vh) rotate(360deg)}}
+nav{position:sticky;top:0;z-index:20;background:linear-gradient(90deg,#f65ce7,#ec48c0,#ce0bf5);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 6px 20px rgba(236,72,153,.35);color:#fff;font-weight:700}
+.logo{font-family:"Bubblegum sans",cursive;font-size:1.8rem;font-weight:400;margin:0;letter-spacing:.5px;text-shadow:0 0 12px rgba(255,255,255,.9),0 2px 6px rgba(0,0,0,.25)}
+.brand{position:relative;display:inline-block}
+.brand .em{position:absolute;font-size:.34em;line-height:1}
+.brand .em1{top:-.5em;left:.05em;transform:rotate(-18deg)}
+.brand .em2{top:-.55em;right:-.15em;transform:rotate(12deg)}
+.brand .em3{bottom:-.15em;right:-.35em;transform:rotate(-8deg)}
+.logo .brand .em{font-size:.5em}
+.container{position:relative;z-index:1;max-width:620px;margin:22px auto;padding:0 14px}
+.hero{text-align:center;margin:4px 0 22px}
+.hero h1{margin:0;font-family:"Bubblegum Sans",cursive;font-size:clamp(2.8rem,13vw,4.6rem);font-weight:400;letter-spacing:.5px;line-height:1.1;background:linear-gradient(90deg,#8b5cf6,#ec4899,#f59e0b);-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;filter:drop-shadow(0 4px 10px rgba(139,92,246,.35))}
+.hero .tagline{margin:8px 0 0;font-size:1.1rem;font-weight:700;color:var(--brand1)}
+.hero .tagline2{margin:4px 0 0;font-size:.95rem;color:var(--muted)}
+.card{position:relative;background:var(--card);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:2px solid var(--border);border-radius:22px;padding:16px;margin-bottom:22px;box-shadow:var(--shadow);transition:transform .2s}
+.card:hover{transform:translateY(-3px) rotate(-.3deg)}
+.card::before{position:absolute;top:-14px;right:14px;font-size:1.6rem;content:"🦄"}
+.card:nth-of-type(6n+1)::before{content:"🐱"}
+.card:nth-of-type(6n+2)::before{content:"🦊"}
+.card:nth-of-type(6n+3)::before{content:"🐼"}
+.card:nth-of-type(6n+4)::before{content:"🐰"}
+.card:nth-of-type(6n+5)::before{content:"🐨"}
+.card::after{position:absolute;bottom:-12px;left:14px;font-size:1.3rem;content:"🧑"}
+.card:nth-of-type(3n+1)::after{content:"👩"}
+.card:nth-of-type(3n+2)::after{content:"👨"}
+.avatar{width:46px;height:46px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.6rem;background:linear-gradient(135deg,#fbcfe8,#ddd6fe);border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.row{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.meta{color:var(--muted);font-size:.85rem;display:block}
+.drop{display:block;border:2px dashed #4a4c5a;border-radius:16px;padding:22px;text-align:center;color:var(--muted);cursor:pointer;background:rgba(255,255,255,.4)}
+.drop span{font-size:2.4rem;display:block}
+input[type=file]{display:none}
+textarea{width:100%;padding:12px 14px;border:2px dashed #565364;border-radius:16px;font-size:1rem;font-family:inherit;background:rgba(255,255,255,.6);color:#2a1f45;margin-top:10px;outline:none;resize:none}
+textarea:focus{border-style:solid;border-color:var(--brand2);box-shadow:0 0 0 4px rgba(236,72,153,.2)}
+img,video{width:100%;border-radius:16px;margin-top:10px;display:block}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;background:linear-gradient(90deg,#f65cec,#f97fd0);color:#fff;border:none;padding:12px 26px;border-radius:999px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;box-shadow:0 4px 14px rgba(236,72,153,.4);margin-top:12px}
+.btn:hover{transform:scale(1.04) rotate(-1deg)}
+.btn:disabled{opacity:.5}
+#status{color:var(--muted);text-align:center;margin:8px 0 0}
+#loader{font-size:2.6rem;text-align:center;display:none;animation:bounce .5s infinite alternate}
+@keyframes bounce{to{transform:translateY(-12px)}}
+.burst{position:fixed;font-size:1.6rem;pointer-events:none;z-index:99;animation:burst .9s ease-out forwards}
+@keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(.4);opacity:0}}
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<nav>
+  <span class="logo"><span class="brand">My VideoMood<span class="em em1">🐱</span><span class="em em2">🦊</span><span class="em em3">🐼</span></span></span>
+  <span>🙋 Create</span>
+</nav>
+
+<div class="container">
+  <div class="hero">
+    <h1><span class="brand">VideoMood<span class="em em1">🐱</span><span class="em em2">🦊</span><span class="em em3">🐼</span></span></h1>
+    <p class="tagline">🐼 Bring your photos to life! 🦊</p>
+    <p class="tagline2">🐶 Upload · 🐱 Describe · 🦁 Generate · 🐻 Download 🐰</p>
+  </div>
+
+  <div class="card">
+    <div class="row">
+      <div class="avatar">🐱</div>
+      <div><b>Create a video</b><span class="meta">Upload a photo and describe the movement</span></div>
+    </div>
+    <label class="drop" for="image"><span>🐶</span>Tap to choose a photo</label>
+    <input type="file" id="image" accept="image/*">
+    <img id="preview" style="display:none">
+    <textarea id="prompt" rows="3" placeholder="e.g. she smiles and waves 👩"></textarea>
+    <button class="btn" id="btn" onclick="generate()">Generate Video 🦊</button>
+    <div id="loader">🐶</div>
+    <p id="status"></p>
+  </div>
+
+  <div class="card" id="resultCard" style="display:none">
+    <div class="row">
+      <div class="avatar">🐰</div>
+      <div><b>Your video</b><span class="meta">Freshly made</span></div>
+    </div>
+    <video id="result" controls loop></video>
+    <a id="dl" class="btn" download="my-video.mp4">Download Video 🐻</a>
+  </div>
+
+  <div style="text-align:center;font-size:1.4rem;letter-spacing:6px;margin-top:20px">🐱🐶🦊🐼🐯🦁🐸🐵🐧🦉🧑👩👨</div>
+</div>
+
+<script>
+const SKY=["😀","😍","🥳","🤩","😎","🧑","👩","👨","🧒","🙋","🐱","🐶","🦊","🐼","🐯","🦁","🐸","🐵","🐧","🦉","🐰","🐨","🐳","🦋","🐻","🐹"];
+const sky=document.getElementById("sky");
+for(let i=0;i<45;i++){
+  const s=document.createElement("span");
+  s.textContent=SKY[Math.floor(Math.random()*SKY.length)];
+  s.style.left=Math.random()*100+"%";
+  s.style.fontSize=(18+Math.random()*30)+"px";
+  s.style.animationDuration=(12+Math.random()*18)+"s";
+  s.style.animationDelay=(-Math.random()*30)+"s";
+  sky.appendChild(s);
+}
+
+function burst(x,y){
+  const A=["🐱","🐶","🦊","🐼","🐰","🐨"];
+  for(let i=0;i<8;i++){
+    const b=document.createElement("span");
+    b.className="burst";
+    b.textContent=A[Math.floor(Math.random()*A.length)];
+    b.style.left=x+"px";b.style.top=y+"px";
+    b.style.setProperty("--dx",(Math.random()*160-80)+"px");
+    b.style.setProperty("--dy",(-40-Math.random()*120)+"px");
+    document.body.appendChild(b);
+    setTimeout(()=>b.remove(),900);
+  }
+}
+
+const imageInput=document.getElementById("image");
+const preview=document.getElementById("preview");
+const loader=document.getElementById("loader");
+const animals=["🐶","🐱","🐰","🦊","🐼","🐨","🐯","🦁"];
+let timer;
+
+imageInput.onchange=()=>{
+  const f=imageInput.files[0];
+  if(f){preview.src=URL.createObjectURL(f);preview.style.display="block";}
+};
+
+async function generate(){
+  const file=imageInput.files[0];
+  const prompt=document.getElementById("prompt").value.trim();
+  const status=document.getElementById("status");
+  const btn=document.getElementById("btn");
+  const card=document.getElementById("resultCard");
+  const video=document.getElementById("result");
+  if(!file||!prompt){status.textContent="Please add a photo and a prompt 🐱";return;}
+
+  const data=new FormData();
+  data.append("image",file);
+  data.append("prompt",prompt);
+
+  btn.disabled=true;
+  card.style.display="none";
+  status.textContent="Generating... this can take 1-3 minutes 🐢";
+  loader.style.display="block";
+  let i=0;
+  timer=setInterval(()=>{loader.textContent=animals[i++%animals.length];},500);
+
+  try{
+    const res=await fetch("/generate",{method:"POST",body:data});
+    const json=await res.json();
+    if(json.error)throw new Error(json.error);
+    video.src=json.url;
+    document.getElementById("dl").href=json.url;
+    card.style.display="block";
+    video.play();
+    status.textContent="Done! 🐶";
+    const r=btn.getBoundingClientRect();
+    burst(r.left+r.width/2,r.top);
+  }catch(e){
+    status.textContent="🙈 Error: "+e.message;
+  }
+  clearInterval(timer);
+  loader.style.display="none";
+  btn.disabled=false;
+}
+</script>
+</body>
+</html>
